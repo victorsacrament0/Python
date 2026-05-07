@@ -146,45 +146,45 @@ main {
   border-radius: 6px;
   width: 97%;
   
-   /* Contêiner principal: esconde o que está fora */
-  .carousel {
-    width: 100%;
-    max-width: 600px; /* Tamanho máximo para não ficar gigante em desktop */
-    margin: auto;
-    overflow: hidden;
-    position: relative;
-  }
+  /* Contêiner principal: esconde o que está fora */
+.carousel {
+  width: 100%;
+  max-width: 600px; /* Tamanho máximo para não ficar gigante em desktop */
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
 
-  /* Contêiner das imagens: define a largura total (3x 100%) */
-  .carousel-container {
-    display: flex;
-    width: 300%; /* 100% para cada uma das 3 imagens */
-    animation: slideAnimation 4s infinite; /* Efeito automático opcional */
-  }
+/* Contêiner das imagens: define a largura total (3x 100%) */
+.carousel-container {
+  display: flex;
+  width: 300%; /* 100% para cada uma das 3 imagens */
+  animation: slideAnimation 3s infinite; /* Efeito automático opcional */
+}
 
-  /* Estilo individual de cada slide */
-  .slide {
-    width: 100%; /* Cada slide ocupa a largura total do .carousel */
-  }
+/* Estilo individual de cada slide */
+.slide {
+  width: 100%; /* Cada slide ocupa a largura total do .carousel */
+}
 
-  /* Imagens responsivas */
-  .slide img {
-    width: 90%;
-    height: auto; /* Mantém a proporção */
-    display: block;
-    padding: 17px;
-  }
+/* Imagens responsivas */
+.slide img {
+  width: 90%;
+  height: auto; /* Mantém a proporção */
+  display: block;
+  padding: 18px;
+}
 
-  /* Animação para mover o carrossel (3 imagens) */
-  @keyframes slideAnimation {
-    0% { transform: translateX(0); }
-    30% { transform: translateX(0); }
-    33% { transform: translateX(-33.333%); }
-    63% { transform: translateX(-33.333%); }
-    66% { transform: translateX(-66.666%); }
-    96% { transform: translateX(-66.666%); }
-    100% { transform: translateX(0); }
-  }
+/* Animação para mover o carrossel (3 imagens) */
+@keyframes slideAnimation {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(0); }
+  33% { transform: translateX(-33.333%); }
+  63% { transform: translateX(-33.333%); }
+  66% { transform: translateX(-66.666%); }
+  96% { transform: translateX(-66.666%); }
+  100% { transform: translateX(0); }
+}
 
   p {
     text-align: center;
