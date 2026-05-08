@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\form.css">
+    <title>|:.RioShine.:|</title>
+</head>
+<body>
+      <header>
+        <nav class="menu">
+            <input type="checkbox" class="menu-faketrigger"/>
+            <div class="menu-lines">
+               <span></span>
+               <span></span>
+               <span></span>
+            </div>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="form.html">Marcações</a></li>
+                <li><a href="contato.html">Sobre</a></li>
+            </ul>
+        </nav>
+        
+        <div class="img"><img id="logo" src="img\lavacar.png" alt="LogoLavaJato"></div>
+
+        
+        <nav class="loginicon">
+            <a href="login.html"><img id="login-icon" src="img\login-icon.png" alt="Login"></a>
+        </nav>
+          
+    </header>
+
+    <main>
+        <h1><b>Marque seu horário:</b></h1>
+        
+        <form action="/enviar-dados" method="POST">
+            <div class="cadastro">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite o seu nome" required><br><br>
+                <label for="veiculo">Veiculo:</label>
+                <input type="text" id="veiculo" name="veiculo" placeholder="Qual seu veiculo?" required><br><br>
+                <label for="telefone">Contato:</label>
+                <input type="text" id="tel" name="tel" placeholder="Digite um n. de contato" required><br><br>
+                <label for="obs">Observação:</label>
+                <input type="text" id="obs" name="obs" placeholder="Observações" required><br><br>
+                
+                
+            </div>
+            
+            <div class="data">
+                <br>Qual data preferida:<br>
+                <label for="data"></label><br>
+                <input type="date" value="data"><br><br>
+                Qual horário preferido:</h5><br><br>
+                <select name="turno" id="">
+                    <option value="manha">-Manhã-</option>
+                    <option value="tarde">-Tarde-</option>
+                </select><br><br>  
+            </div>
+
+
+            
+            <div class="servicos">
+                <h3><br> -Qual serviço a ser realizado?</h3><br>
+                <label for="botao">Completa</label>
+                <input type="radio" id="completa" name="servico"><br>
+                <label for="botao">Motor</label>
+                <input type="radio" id="motor" name="servico"><br>
+                <label for="botao">Bancos</label>
+                <input type="radio" id="bancos" name="servico"><br>
+                <label for="botao">AR</label>
+                <input type="radio" id="ar" name="servico"><br>
+                <label for="botao">Externa</label>
+                <input type="radio" id="externa" name="servico"><br><br>
+            </div>
+
+            <div class="envio">
+                <input  class="input-personalizado" type="submit" value="Enviar">
+                <input class="input-personalizado" type="reset" value="Limpar">
+            </div>
+        </form>
+
+    </main>
+    <footer>
+       <nav> 
+            <a href="form.html"><b>Contato</b></a> <a href="instagram.html"><b>Sociais</b></a>
+       </nav>
+    </footer>
+    
+</body>
+</html>
