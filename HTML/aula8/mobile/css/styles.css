@@ -7,7 +7,7 @@
 }
 
 body{
-  background-color: #0378A6;
+  background-color: #0378A6 !important;
   display: grid;
   width: 100%; 
   max-width: 100%; 
@@ -285,15 +285,17 @@ footer {
   border-radius: 6px;
   width: 97%;
   height: 8vh;
-  padding-top: 14px;
+  padding-top: 6px;
   margin-bottom: 7px;
-  margin-top: -10px;
+  margin-top: -9px;
   
 
   nav{ 
     display: flex;
     justify-content: center;
     gap: 40px;
+    align-items: center;
+    
    a{
     color: black;
     text-decoration: none; 
