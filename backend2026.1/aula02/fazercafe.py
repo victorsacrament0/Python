@@ -15,3 +15,15 @@ def msg():
 msg()
 
 
+""" Crie Funões chamadas saudacao, menu e linha """
+
+def saudacao():
+    print('Saudações!')
+def menu():
+    print('Menu:','\n','Macarronada e Feijoada')
+def line():
+    print('_'*30)
+
+saudacao()
+menu()
+line()
