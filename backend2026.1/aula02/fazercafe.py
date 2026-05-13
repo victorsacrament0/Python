@@ -37,7 +37,7 @@ def saudacao(id):
  
 saudacao(id)
 
-"""  """
+""" Outros Desafios """
 
 age = input('Digite a idade:')
 city = input('Digite uma cidade:')
@@ -61,3 +61,17 @@ def product(prod):
 idade(age)
 cidade(city)
 product(prod)
+
+
+""" desafio facil - crie uma funcao que receba nome e idade , mostre """
+
+
+name = input('Digite seu nome:')
+age = input('Digite sua idade:')
+
+def ident(name,age):   
+    
+    print(f'O aluno {name}, tem {age} anos!')
+    print(30*'_','\n')
+
+ident(name,age)
