@@ -27,3 +27,15 @@ def line():
 saudacao()
 menu()
 line()
+
+""" Faça uma função que mostre o nome de um aluno """
+id = input('Digite o seu nome:')
+
+def saudacao(id):
+    
+    print(f'Olá, {id}!')
+ 
+saudacao(id)
+
+
+
