@@ -75,3 +75,43 @@ def ident(name,age):
     print(30*'_','\n')
 
 ident(name,age)
+
+""" Criar funcao, produto, venda e calculo simples """
+
+prod = input('Digite o produto desejado:')
+num1 = input('Digite um numero:')
+num2 = input('Digite outro numero:')
+soma = num1+num2
+
+def produto(prod):
+    print(f'O produto escolhido foi:{prod}')
+
+def venda(sale):
+    print('Venda realizada com sucesso!!!',sale)
+
+def somar(soma):
+    print('A soma dos numeros foi', soma)
+
+produto(prod)
+venda('Obrigado!')
+somar(soma)
+
+""" 
+        #cadastro de produto
+        def produto(nome):
+            print("produto:", nome)
+        
+        produto("Notebook")
+        
+        #venda
+        def vender(nome):
+            print("vendido:", nome)
+        
+        vender("caderno")
+        
+        #Calculo simples
+        def mostrar_soma(a, b):
+            print("Resultado:", a + b)
+        
+        mostrar_soma (5, 5)
+ """
