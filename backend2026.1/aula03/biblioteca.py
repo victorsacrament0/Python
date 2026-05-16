@@ -17,11 +17,11 @@ def mostrar_livros():
 def emprestimo_livros():
     mostrar_livros()
     escolha = int(input('Escolha a opção desejada pelo número: '))
-    emprestimos.append(escolha)
+    emprestimos.append(biblioteca[escolha])
     mensagem('Livro emprestado com sucesso!')
 
 def total_emprestimo():
-    len(emprestimos)
+    return len(emprestimos)
 
 def menu():
     print('\n==== Biblioteca Python ====')
@@ -33,20 +33,26 @@ def menu():
 
 def main():
     menu()
-    opcao = int(input('Escolha uma opção: '))
-    if opcao == 1:
-        cadastro_livros()
-    elif opcao == 2:
-        mostrar_livros()
-    elif opcao == 3:
-        emprestimo_livros()
-    elif opcao == 4:
-        mensagem(f'Total de emprestimos: {total_emprestimo()}')
-    elif opcao == 5:
-        mensagem('Saindo...')
-        break
-    else:
-        print('Digite um valor valido!')
+    while True:
+        opcao = int(input('Escolha uma opção: '))
+        if opcao == 1:
+            cadastro_livros()
+
+        elif opcao == 2:
+            mostrar_livros()
+
+        elif opcao == 3:
+            emprestimo_livros()
+
+        elif opcao == 4:
+            mensagem(f'Total de emprestimos: {total_emprestimo()}')
+
+        elif opcao == 5:
+            mensagem('Saindo...')
+            break
+
+        else:
+            print('Digite um valor valido!')
 
 main()
 
