@@ -27,11 +27,16 @@ def registrar_venda():
             total_venda = quantidade * preco
             ingressos_vendidos.append(quantidade)
             valores_arrecadados.append(total_venda)
+            print('_'*35)
             print(f"\n{quantidade} ingresso(s) registrado(s) com sucesso! Total da venda: R$ {total_venda:.2f}")
         else:
             print("\nQuantidade e preço devem ser valores positivos.")
     except ValueError:
         print("\nEntrada inválida. Digite apenas números.")
+        print('_'*35,'\n')
+
+    
+    print(f'O filme escolhido foi {filme}, \nPreço unitário: R${preco:.2f}, \nQaunditade: {quantidade}')
 
 def calcular_total_arrecadado():
     total = sum(valores_arrecadados)
