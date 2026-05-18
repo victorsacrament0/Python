@@ -33,9 +33,7 @@ def registrar_venda():
             print("\nQuantidade e preço devem ser valores positivos.")
     except ValueError:
         print("\nEntrada inválida. Digite apenas números.")
-        
 
-    
     print(f'O filme escolhido foi {filme}, \nPreço unitário: R${preco:.2f}, \nQuantidade: {quantidade}')
     print('_'*35,'\n')
 
