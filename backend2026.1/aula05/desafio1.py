@@ -15,3 +15,30 @@ class ContaBancaria:
 operacao = ContaBancaria(1000,500)
 operacao.info_saldo()
 operacao.info_dep()
+
+
+""" outra forma  
+
+class ContaBancaria:
+    def __init__(self, saldo, deposito):
+        self.saldo = 0
+        self.deposito = deposito
+ 
+    def saldo_atual(self):
+        print(f"Saldo atual: R${self.saldo:.2f}")
+   
+    def realizar_deposito(self):
+        info_deposito =  int(input("Digite o valor do depósito: "))
+        if info_deposito > 0:
+            print(f"Depósito de R${info_deposito:.2f} realizado com sucesso.")    
+        else:
+            info_deposito == 0
+            print("Valor de depósito inválido.")
+        self.saldo += info_deposito
+
+conta = ContaBancaria(0,0)
+conta.saldo_atual()
+conta.realizar_deposito()
+conta.saldo_atual()
+
+"""
