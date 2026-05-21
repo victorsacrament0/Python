@@ -16,29 +16,33 @@ class Calculadora:
         
 
     def main(self):
-        
+         
         while True:
-            opcao = int(input("Escolha um opção:(Para sair, digitar qualquer outro valor)\n[1 - Somar]\n[2 - Subtrair]\n[3 - Dividir]\n[4 - Multiplicar]\n ->"))
- 
-            if opcao == 1:
-                number1 = float(input('Digite o primeiro número: '))
-                number2 = float(input('Digite o segundo número: '))
-                self.somar(number1,number2)
-            elif opcao == 2:
-                number1 = float(input('Digite o primeiro número: '))
-                number2 = float(input('Digite o segundo número: '))
-                self.subtrair(number1,number2)
-            elif opcao == 3:
-                number1 = float(input('Digite o primeiro número: '))
-                number2 = float(input('Digite o segundo número: '))
-                self.dividir(number1,number2)
-            elif opcao == 4:
-                number1 = float(input('Digite o primeiro número: '))
-                number2 = float(input('Digite o segundo número: '))
-                self.multiplicar(number1,number2)
-            else:
-                print(f"\n| VALOR INVALIDO |\n    | SAINDO |\n")
-                break
-
+            try:
+                opcao = int(input("Escolha um opção:(Para sair, digitar qualquer outro valor)\n[1 - Somar]\n[2 - Subtrair]\n[3 - Dividir]\n[4 - Multiplicar]\n ->"))
+                
+                if opcao == 1:
+                    number1 = float(input('Digite o primeiro número: '))
+                    number2 = float(input('Digite o segundo número: '))
+                    self.somar(number1,number2)
+                elif opcao == 2:
+                    number1 = float(input('Digite o primeiro número: '))
+                    number2 = float(input('Digite o segundo número: '))
+                    self.subtrair(number1,number2)
+                elif opcao == 3:
+                    number1 = float(input('Digite o primeiro número: '))
+                    number2 = float(input('Digite o segundo número: '))
+                    self.dividir(number1,number2)
+                elif opcao == 4:
+                    number1 = float(input('Digite o primeiro número: '))
+                    number2 = float(input('Digite o segundo número: '))
+                    self.multiplicar(number1,number2)
+                else:
+                    print(f"\n| VALOR INVALIDO |\n    | SAINDO |\n")
+                    break
+            except ValueError:
+                print(40*("-"))
+                print("Operação inválida! Por favor, tente novamente.")
+                print(40*("-"))
 numb = Calculadora()
 numb.main()
