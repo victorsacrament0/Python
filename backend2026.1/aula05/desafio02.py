@@ -20,10 +20,9 @@ operacao.info_dep()
 """ outra forma  
 
 class ContaBancaria:
-    def __init__(self, saldo, deposito):
+    def __init__(self):
         self.saldo = 0
-        self.deposito = deposito
- 
+   
     def saldo_atual(self):
         print(f"Saldo atual: R${self.saldo:.2f}")
    
@@ -36,7 +35,7 @@ class ContaBancaria:
             print("Valor de depósito inválido.")
         self.saldo += info_deposito
 
-conta = ContaBancaria(0,0)
+conta = ContaBancaria()
 conta.saldo_atual()
 conta.realizar_deposito()
 conta.saldo_atual()
