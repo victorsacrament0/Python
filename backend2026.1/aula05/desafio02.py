@@ -24,7 +24,7 @@ class ContaBancaria:
         self.__saldo = 0
    
     def saldo_atual(self):
-        print(f"Saldo atual: R${self.saldo:.2f}")
+        print(f"Saldo atual: R${self.__saldo:.2f}")
    
     def realizar_deposito(self):
         info_deposito =  int(input("Digite o valor do depósito: "))
@@ -33,7 +33,7 @@ class ContaBancaria:
         else:
             info_deposito == 0
             print("Valor de depósito inválido.")
-        self.saldo += info_deposito
+        self.__saldo += info_deposito
 
 conta = ContaBancaria()
 conta.saldo_atual()
