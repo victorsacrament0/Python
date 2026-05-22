@@ -1,49 +1,53 @@
-class Calculadora:
+class Animal:
+    def __init__(self,nome_animal,idade_animal,tipo_animal):
+        self.nome = nome_animal
+        self.idade = idade_animal
+        self.tipo = tipo_animal
+
+    def mostrar_dados(self):
+        print(f'O animal {self.nome},\na idade é {self.idade},\nTipo: {self.tipo}')
+
+ 
+ 
+class Petshop:
     def __init__(self):
-        print('|:.Calculadora Três Esquilos.:|\n')
+        self.animais = []
+        print('\n==== ANIMAIS ====')
+   
+    def cadastar_animal(self,nome,idade,tipo):
+        meu_animal = Animal(nome,idade,tipo)
+        self.animais.append(meu_animal)
+        print('Animal Cadastrado!')
 
-    def somar (self,nu1,nu2):
-        print (f"\n|:Resultado: {nu1} + {nu2} =  [{nu1 + nu2}]  :|\n")
-    
-    def subtrair (self,nu1,nu2):
-        print(f"\n|:Resultado: {nu1} - {nu2} =  [{nu1 - nu2}]  :|\n")
-    
-    def dividir (self,nu1,nu2):
-        print(f"\n|:Resultado: {nu1} ÷ {nu2} =  [{nu1 / nu2}]  :|\n")
-
-    def multiplicar (self,nu1,nu2):
-        print(f"\n|:Resultado: {nu1} x {nu2} =  [{nu1 * nu2}]  :|\n")
+    def mostrar_animais(self):
+        print('_'*45)
+        
+        for meu_animal in self.animais:
+            meu_animal.mostrar_dados()
+            print('_'*45,'\n')
         
 
     def main(self):
          
         while True:
             try:
-                opcao = int(input("Escolha um opção:(Para sair, digitar qualquer outro número)\n[1 - Somar]\n[2 - Subtrair]\n[3 - Dividir]\n[4 - Multiplicar]\n ->"))
+                opcao = int(input("Escolha um opção:\n[1 - cadastrar]\n[2 - Mostrar]\n[3 - Sair]\n ->"))
                 
                 if opcao == 1:
-                    number1 = float(input('Digite o primeiro número: '))
-                    number2 = float(input('Digite o segundo número: '))
-                    self.somar(number1,number2)
+                    nameani = input('Digite o nome: ')
+                    ageani = input('Digite a idade: ')
+                    typeani = input('Qual o tipo: ')
+                    self.cadastar_animal(nameani,ageani,typeani)
                 elif opcao == 2:
-                    number1 = float(input('Digite o primeiro número: '))
-                    number2 = float(input('Digite o segundo número: '))
-                    self.subtrair(number1,number2)
+                     self.mostrar_animais()
                 elif opcao == 3:
-                    number1 = float(input('Digite o primeiro número: '))
-                    number2 = float(input('Digite o segundo número: '))
-                    self.dividir(number1,number2)
-                elif opcao == 4:
-                    number1 = float(input('Digite o primeiro número: '))
-                    number2 = float(input('Digite o segundo número: '))
-                    self.multiplicar(number1,number2)
-                else:
-                    print(f"\n| VALOR INVALIDO |\n    | SAINDO |\n")
+                    print("\nSaindo. Até logo!")
                     break
             except ValueError:
-                print(46*("-"))
-                print("Operação inválida! Por favor, tente novamente.")
-                print(46*("-"))
+                    print(46*("-"))
+                    print("Operação inválida! Por favor, tente novamente.")
+                    print(46*("-"))
 
-numb = Calculadora()
-numb.main()
+
+anim = Petshop()
+anim.main()
