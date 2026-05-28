@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados Clientes</title>
+</head>
+<body>
+    <main>
+        <h1><b>{{mensagem}}</b></h1>
+
+        <ul>
+            <li>Nome:{{ clientesdb.nome }}</li>
+            <li>Idade:{{ clientesdb.idade }}</li>
+            <li>Nascimento:{{ clientesdb.nascimento }}</li>
+        </ul>
+        <hr>
+        <h2><b>Nome Clientes</b></h2>
+        <ol>
+            {% for nome in dados %}
+            <li>{{nome}}</li>
+            {% endfor %}
+        </ol>
+    </main>
+</body>
+</html>
