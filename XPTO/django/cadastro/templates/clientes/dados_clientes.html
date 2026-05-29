@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados Clientes</title>
+</head>
+<body>
+    <main>
+        <h1><b>{{mensagem}}</b></h1>
+
+        <hr>
+                
+        <table border="1">
+            <thead>
+                <th> Nome: </th>
+                <th> Curso: </th>
+                <th> Turma: </th>
+            </thead>
+        
+        
+        
+            <tbody>
+                {%  for id in clientesdb  %} 
+                <tr>
+                    <td> {{ id.nome }} </td>
+                    <td> {{ id.curso }} </td>
+                    <td> {{ id.turma }} </td>
+                    <td><button><b></b>Editar</b></button><button><b></b>Excluir</b></button></td>
+                </tr>
+                {% endfor  %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
