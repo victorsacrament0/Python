@@ -2,6 +2,9 @@ from django.shortcuts import render
 
 # Create your views here.
 
+def home (request):
+    titulo = 'Pagina Inicial'
+    return render(request, 'alunos/home.html', {'titulo':  titulo})
 
 def dados_alunos (request):
     titulo = 'Nossos Alunos'
