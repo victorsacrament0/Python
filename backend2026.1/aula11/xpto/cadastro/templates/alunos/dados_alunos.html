@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{%  block content %}
+
+<body>
+    <main>
+        <h1><b>{{mensagem}}</b></h1>
+
+        <hr>
+                
+        <table border="1">
+            <thead>
+                <th style="background-color: rgb(184, 182, 182);"> Nome: </th>
+                <th style="background-color: rgb(184, 182, 182);">  Curso: </th>
+                <th style="background-color: rgb(184, 182, 182);">  Turma: </th>
+                <th style="background-color: rgb(184, 182, 182);">  Ações </th>
+            </thead>
+        
+        
+        
+            <tbody>
+                {%  for id in clientesdb  %} 
+                <tr>
+                    <td style="padding: 10px;">  {{ id.nome }}  </td>
+                    <td style="padding: 10px;">  {{ id.curso }}  </td>
+                    <td style="padding: 10px;">  {{ id.turma }}  </td>
+                    <td><button><b></b>Editar</b></button><button><b></b>Excluir</b></button></td>
+                </tr>
+                {% endfor  %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}
