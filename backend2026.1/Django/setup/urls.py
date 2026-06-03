@@ -24,7 +24,7 @@ urlpatterns = [
     #Vai chamar a função ola_mundo dentro do views do app cliente
     #path('endereço/', metodo),
 
-    path('', home),
-    path('clientes/', dados_clientes),
-    path('formulario/', fomulario)
+    path('', home,name='/'),
+    path('clientes/', dados_clientes,name='clientes'),
+    path('formulario/', fomulario,name='form')
 ]
