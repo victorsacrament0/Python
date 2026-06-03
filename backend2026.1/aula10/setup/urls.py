@@ -27,3 +27,4 @@ urlpatterns = [
     path('', home),
     path('clientes/', dados_clientes),
     path('formulario/', fomulario)
+]
