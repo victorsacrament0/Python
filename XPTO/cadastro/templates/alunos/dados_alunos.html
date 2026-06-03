@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dados Alunos</title>
-</head>
+{% extends "base.html" %}
+
+{%  block content %}
+
 <body>
-    <header>
-        <nav>
-           <li><a href="{% url '/' %}">Inicio</a></li>
-        </nav>
-    </header>
     <main>
         <h1><b>{{mensagem}}</b></h1>
 
@@ -38,5 +30,4 @@
             </tbody>
         </table>
     </main>
-</body>
-</html>
+{% endblock %}
