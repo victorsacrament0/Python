@@ -24,3 +24,8 @@ def dados_clientes(request):
 def fomulario(request):
     titulo = "Cadastro Clientes"
     return render(request, 'clientes/form.html', {'titulo':titulo})
+
+def contato(request):
+    titulo = 'Contato'
+    contato = 'email@phyton.com'
+    return render(request, 'clientes/contato.html', {'titulo': titulo, 'contato': contato})
