@@ -9,4 +9,12 @@ class Aluno(models.Model):
 
     def __str__(self):
         return self.nome
-    
+
+class Campus(models.Model):
+    nome = models.CharField(max_length=255, unique=True)
+
+    #Relação com a tabela clientes
+    aluno  = models.ForeignKey(Aluno, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nome   

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import Aluno, Campus
 # Create your views here.
 
 def home (request):
@@ -9,11 +9,11 @@ def home (request):
 def dados_alunos (request):
     titulo = 'Nossos Alunos'
     
-    lista_alunos = [
-        {'nome' : 'Thyago Matarazzo','curso' : 'Análise e Desenvolvimento de Sistemas','turma' : '2026.2M'},
-        {'nome' : 'João Gutierrez','curso' : 'Ciência da Computação','turma' : '2026.1T'},
-        {'nome' : 'Marcela Correa','curso' : 'Engenharia de Software','turma': '2026.1N'},
-        {'nome' : 'Pedro Pereira','curso' : 'Sistemas de Informação','turma': '2026.2N'},
-    ]
+    lista_alunos = Aluno.objects.all()
 
-    return render(request, 'alunos\dados_alunos.html', { 'mensagem':titulo, 'clientesdb':lista_alunos })
+    return render(request, 'alunos\dados_alunos.html', { 'mensagem':titulo, 'lista_alunos':lista_alunos })
+
+def campus(request):
+    titulo = "Unidades Escolares"
+    nossos_campus = Campus.objects.all()
+    return render(request, 'alunos\campus.html', { 'titulo': titulo, 'nossos_campus':nossos_campus })

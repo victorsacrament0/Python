@@ -19,11 +19,11 @@
         
         
             <tbody>
-                {%  for id in clientesdb  %} 
+                {%  for aluno in lista_alunos  %} 
                 <tr>
-                    <td style="padding: 10px;">  {{ id.nome }}  </td>
-                    <td style="padding: 10px;">  {{ id.curso }}  </td>
-                    <td style="padding: 10px;">  {{ id.turma }}  </td>
+                    <td style="padding: 10px;">  {{ aluno.nome }}  </td>
+                    <td style="padding: 10px;">  {{ aluno.curso }}  </td>
+                    <td style="padding: 10px;">  {{ aluno.turma }}  </td>
                     <td><button><b></b>Editar</b></button><button><b></b>Excluir</b></button></td>
                 </tr>
                 {% endfor  %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{%  block content %}
+
+    <h1>{{ titulo }}</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Campus: </th>
+                    <th>Aluno: </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in nossos_campus %}
+                <tr>
+                    <td>{{ i.nome }}</td>
+                    <td>{{ i.aluno.nome }}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+{% endblock %}
