@@ -6,7 +6,7 @@
     margin-top: 40px;
     text-align: center;
     padding: 20px;
-    cursor:pointer ;
+    cursor: pointer;
 
 }
 
@@ -34,9 +34,11 @@
 }
 
 #att_cliente{
+
     display: none;
 }
 
 #form-att-cliente{
-    display: none ;
+    display: none;
+
 }
