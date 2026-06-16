@@ -126,3 +126,38 @@ function update_cliente(){
     })
 
 }
+
+function update_cliente(){
+
+    nome = document.getElementById('nome').value
+    sobrenome = document.getElementById('sobrenome').value
+    email = document.getElementById('email').value
+    cpf = document.getElementById('cpf').value
+    id = document.getElementById('id').value
+
+    fetch('/clientes/update_cliente/'+ id, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrf_token, 
+        },
+        body: JSON.stringify({
+            nome : nome,
+            sobrenome : sobrenome,
+            email : email,
+            cpf : cpf
+
+        })
+    }).then(function(result){
+        return result.json()
+    }).then(function(data){
+        if(data['status'] == '200'){
+        nome = data['nome']
+        sobrenome = data['sobrenome']
+        email = data['email']
+        cpf = data['cpf']
+        }
+        else
+            return
+    })
+
+}
