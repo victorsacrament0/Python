@@ -74,13 +74,11 @@ function dados_cliente(){
                         <div class='col-md'>\
                             <input class='form-control' type='text' name='ano' value='" + data['carros'][i]['fields']['ano'] + "' >\
                         </div>\
-                        <div class='col-md'>\
-                            <input class='btn btn-lg btn-success' type='submit' value='Salvar'>\
+                        <div class='col-md d-flex gap-2'>\
+                            <input class='btn btn-success w-100' type='submit' value='Salvar'>\
+                            <a class='btn btn-danger w-100 d-flex align-items-center justify-content-center' href='/clientes/excluir_carro/"+ data['carros'][i]['id'] +"'>Excluir</a>\
                         </div>\
                     </form>\
-                    <div class='col-md'>\
-                        <a class='btn btn-danger' href='/clientes/excluir_carro/"+ data['carros'][i]['id'] +"' class='btn btn-lg btn-danger'>EXCLUIR</a>\
-                    </div>\
                 </div><br>"
         }
         
