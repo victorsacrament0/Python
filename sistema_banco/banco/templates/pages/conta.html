@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="conta-box">
+    <h2><b>Conta:{{conta.numero}}</b></h2>
+    <p><b>Cliente:{{conta.Cliente.nome}}</b></p>
+
+    <div class="saldo">
+        <strong>Saldo: </strong>
+        <span class="saldo-valor">R$ {{conta.saldo|floatformat:2}} </span>
+    </div>
+
+    <div class="botoes">
+        <a href="" class="btn btn-success"><b>Depositar</b></a>
+        <a href="" class="btn btn-warning"><b>Sacar</b></a>
+    </div>
+
+</section>
+{% endblock %}
