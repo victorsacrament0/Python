@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, FileResponse
-from .models import Servico
+from .models import Servico,ServicoAdicional
 from .forms import FormServico
 from fpdf import FPDF
 from io import BytesIO
@@ -61,5 +61,22 @@ def gerar_os (gerar_os, identificador):
     pdf_content = pdf.output(dest='S').encode('latin1')
     pdf_bits = BytesIO(pdf_content)
     return FileResponse(pdf_bits, filename=f'os-{servico.protocolo}.pdf')
+
+def servico_adicional(request):
+    identificador_servico = request.POST.get('identificador_servico')
+    titulo = request.POST.get('titulo')
+    descricao = request.POST.get('descricao')
+    preco = request.POST.get('preco')
+
+    servico_adicional = ServicoAdicional(titulo=titulo,
+                                        descricao=descricao,
+                                        preco=preco)
     
+    servico_adicional.save()
+
+    servico = Servico.objects.get(identificador=identificador_servico)
+    servico.servicos_adicionais.add(servico_adicional)
+    servico.save()
+
+    return HttpResponse("Salvo")    
     
