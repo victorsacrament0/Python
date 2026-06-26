@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from usuario.models import Usuario
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=100)
@@ -18,7 +19,8 @@ class Livros(models.Model):
     data_emprestimo = models.DateTimeField(blank=True, null= True)
     data_devolucao = models.DateTimeField(blank=True, null= True)
     tempo_duracao = models.DateField(blank=True, null= True)
-    categoria = models.ForeignKey(Categoria, on_delete= models.DO_NOTHING)
+    categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING)
+    usuario = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING)
 
     class Meta:
         verbose_name = 'Livro'

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block 'titulo' %} Livros {% endblock %}
+
+{% block 'conteudo' %}
+
+<div style="text-align: center;" class="container">
+    <h1>{{livro.nome}}</h1>
+    <h3>{{livro.autor}}</h3>
+    <h3>{{livro.co_autor}}</h3>
+    <h4>{{livro.data_cadastro}}</h4>
+    {% if livro.emprestado %}
+        <p>⛔Livro emprestado⛔</p>
+    {% else %}
+        <p>✅Livro disponível✅</p>
+    {% endif %}
+    <br>
+    <button>Histórico</button>
+
+</div>
+
+{% livro.nome %}
+
+{% endblock %}
