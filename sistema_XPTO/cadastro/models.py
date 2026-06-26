@@ -16,5 +16,8 @@ class Campus(models.Model):
     #Relação com a tabela clientes
     aluno  = models.ForeignKey(Aluno, on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = 'Campu'
+
     def __str__(self):
         return self.nome   

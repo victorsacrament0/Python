@@ -3,6 +3,7 @@ from clientes.models import Cliente
 from .choices import ChoicesCategoriaManutencao
 from datetime import datetime
 from secrets import token_hex, token_urlsafe
+
 class CategoriaManutencao(models.Model):
     titulo = models.CharField(max_length=3, choices=ChoicesCategoriaManutencao.choices)
     preco = models.DecimalField(max_digits=10, decimal_places=2)

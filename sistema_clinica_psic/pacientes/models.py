@@ -16,6 +16,9 @@ class Pacientes(models.Model):
     pagamento_em_dia = models.BooleanField(default=True)
     queixa = models.CharField(max_length=255, choices=queixa_choices)
 
+    class Meta:
+        verbose_name = 'Paciente'
+
     def __str__(self):
         return self.nome
     
@@ -31,6 +34,9 @@ class Tarefas(models.Model):
     instrucoes = models.TextField()
     frequencia = models.CharField(max_length=2, choices=frequencia_choices, default='D')
 
+    class Meta:
+        verbose_name = 'Tarefa'
+
     def __str__(self):
         return self.tarefa
     
@@ -42,6 +48,9 @@ class Consultas(models.Model):
     paciente = models.ForeignKey(Pacientes, on_delete=models.CASCADE)
     data = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = 'Consulta'
+
     def __str__(self):
         return self.paciente.nome
     
@@ -52,6 +61,9 @@ class Consultas(models.Model):
 class Visualizacoes(models.Model):
     consulta = models.ForeignKey(Consultas, on_delete=models.CASCADE)
     ip = models.GenericIPAddressField()
+
+    class Meta:
+        verbose_name = 'Visualizaçõe'
     
     @property
     def views(self):
