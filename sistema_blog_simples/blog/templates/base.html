@@ -20,7 +20,7 @@
           </buttwon>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-                {% if user.is_authenticated %}
+                {% if usuario.is_authenticated %}
               <a class="nav-item nav-link" href="{% url 'blog-home' %}">Inicio</a>
               <a class="nav-item nav-link" href="{% url 'blog-sobre' %}">Sobre</a>
             </div>
@@ -35,21 +35,21 @@
                 <span></span>
                 <span></span>
                 <span></span>
-                Create Post
+                Criar Postagem
             </a>
                 <a href="{% url 'perfil' %}" id="auth-links">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                Profile
+                Perfil
             </a>
                 <a href="{% url 'logout' %}" id="auth-links">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                Logout
+                Sair
             </a>
                 {% else %}
               <a href="{% url 'login' %}" id="auth-links">
@@ -59,12 +59,12 @@
                 <span></span>
                 Login
             </a>
-            <a href="{% url 'cadastro' %}" id="auth-links">
+            <a href="{% url 'cadastrar' %}" id="auth-links">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                Register
+                Cadastrar
             </a>
             <!-- <a href="#">
                 <span></span>

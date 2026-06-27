@@ -1,19 +1,20 @@
 {% extends 'blog/base.html' %}
-
+{% load crispy_forms_tags %}
+{% block title %}Cadastro{% endblock %}
 {% block content %}
     <div class="content-section">
         <form action="" method="POST">
             {% csrf_token %}
             <fieldset>
                 <legend class="border-bottom mb-4">Cadastre-se</legend>
-                {{ form }}
+                {{ form|crispy }}
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Cadastrar</button>
             </div>
         </form>
         <div class="border-top pt-3">
-            <small class="text-muted">Já é cadastrado?<a href="">Login</a></small>
+            <small class="text-muted">Já é cadastrado?<a href="{% url 'login' %}">Login</a></small>
         </div>
 
     </div>
