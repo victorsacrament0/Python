@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="conta-box">
+    <h2><b>Conta:{{conta.numero}}</b></h2>
+    <p><b>Cliente:{{conta.Cliente.nome}}</b></p>
+
+    <div class="saldo">
+        <strong>Saldo: </strong>
+        <span class="saldo-valor">R$ {{conta.saldo|floatformat:2}} </span>
+    </div>
+
+    <div class="botoes">
+        <a href="{% url 'depositar' conta.id %}" class="btn btn-success"><b>Depositar</b></a>
+        <a href="{% url 'sacar' conta.id %}" class="btn btn-warning"><b>Sacar</b></a>
+    </div>
+
+    <div class="movimentos">
+        <h3>Ultimos movimentos</h3>
+        {% if movimentos %}
+            <ul>
+                {% for mov in movimentos %}
+                    <li class="movimento-{{ mov.tipo }}">
+                        {{ mov.data|date:"d/m H:i" }} <!-- Exibe a data em formato dia/mes hora/minutos  -->
+                        {{ mov.get_tipo_display }}
+                        R$ {{ mov.valor }}                    
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhum movimento ainda.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
