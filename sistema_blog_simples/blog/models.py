@@ -8,6 +8,9 @@ class Postagem(models.Model):
     conteudo = models.TextField()
     data_postagem = models.DateTimeField(default=timezone.now) 
     
+    class Meta:
+        verbose_name = 'Postagen'
+        
     def __str__(self):
         return self.titulo
 

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'blog/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -20,7 +20,7 @@
           </buttwon>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-                {% if usuario.is_authenticated %}
+                {% if user.is_authenticated %}
               <a class="nav-item nav-link" href="{% url 'blog-home' %}">Inicio</a>
               <a class="nav-item nav-link" href="{% url 'blog-sobre' %}">Sobre</a>
             </div>
@@ -30,27 +30,30 @@
               <a class="nav-item nav-link" href="#">Cadastrar</a> -->
               <!-- <button class="noselect">Criar Postagem</button> -->
 <!--                <h3 style="color: white;">Olá {{request.user}}</h3>-->
-                <a href="{% url 'blog-novo' %}" id="auth-links">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Criar Postagem
-            </a>
+                <a href="" id="auth-links">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  Criar Postagem
+                </a>
                 <a href="{% url 'perfil' %}" id="auth-links">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Perfil
-            </a>
-                <a href="{% url 'logout' %}" id="auth-links">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  Perfil
+                </a>
+                <form action="{% url 'logout' %}" method="POST" style="display: inline;">
+                  {% csrf_token %}
+                <button type="submit" id="auth-links">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Sair
-            </a>
+                </form>
+                </button>
                 {% else %}
               <a href="{% url 'login' %}" id="auth-links">
                 <span></span>
@@ -142,7 +145,7 @@
 
         <footer class="" >
           <ul class="nav justify-content-center border-bottom"  style="margin-top: 60px;">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
+            <li class="nav-item"><a href="{% url 'blog-home' %}" class="nav-link px-2 text-muted">Inicio</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Recursos</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contato</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Sobre</a></li>

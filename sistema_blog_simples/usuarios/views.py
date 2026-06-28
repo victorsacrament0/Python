@@ -1,21 +1,44 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import CadastroUsuarioForm
+from .forms import UserRegisterForm, ProfileUpdateForm, UserUpdateForm
 
 def cadastrar(request):
     if request.method == 'POST':
-        form = CadastroUsuarioForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            usuario = form.cleaned_data.get('usuario')
-            messages.success(request, f'Conta criada com sucesso para {usuario}')
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Conta criada com sucesso para {username}')
             return redirect('login')
     else:
-        form = CadastroUsuarioForm()
+        form = UserRegisterForm()
     return render(request,'usuarios/cadastrar.html',{'form':form})
 
 @login_required
 def perfil(request):
-    return render(request,'usuarios/perfil.html')
+    return render(request, 'usuarios/perfil.html')
+
+@login_required
+def profile_update(request):
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST,
+                                   request.FILES,
+                                   instance=request.user.perfil)
+
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Sua conta foi atualizada!!')
+            return redirect('perfil')
+
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.perfil)
+
+    context = {
+        "u_form": u_form,
+        "p_form": p_form
+    }
+    return render(request, 'usuarios/profile_update.html', context)
