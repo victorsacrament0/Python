@@ -1,0 +1,29 @@
+{% extends 'pages/base.html' %}
+{% block title %}Detalhes{% endblock %}
+
+{% block content %}
+
+
+        <article class="media content-section" style=" margin-top: 56px;">
+        <img class="rounded-cirlce article-img" src="{{ object.autor.perfil.image.url }}" alt="avatar">    
+          
+          <div class="media-body">
+            
+            <h2>{{ object.titulo }}</h2>
+            <p class="article-content">{{ object.conteudo }}</p>
+          </div>
+          
+          <div class="article-metadata" >
+            <h4></h4><a class="mr-2" href="">Por: {{ object.autor }}</a></h4>
+            <small class="text-muted">{{ object.data_postagem }}</small> <br>
+            {% if object.autor == user %}
+
+              <div class="media content-section">
+                  <a class="btn btn-outline-success" href="{% url 'blog-update' object.id %}"><b>Atualizar</b></a>
+                  <a class="btn btn-outline-danger" href="{% url 'blog-delete' object.id %}"><b>Apagar</b></a>
+              </div>
+            {% endif %}
+          </div>
+          <br>
+          </article>
+{% endblock content %}

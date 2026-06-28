@@ -1,22 +1,21 @@
 {% extends 'pages/base.html' %}
 {% load crispy_forms_tags %}
-{% block title %}Cadastro{% endblock %}
+{% block title %}Atualizar{% endblock %}
+
 {% block content %}
     <div style="margin-top: 56px;" class="content-section">
         <form action="" method="POST">
             {% csrf_token %}
-            <fieldset>
-                <legend class="border-bottom mb-4">Cadastre-se</legend>
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Atualizar Postagem</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Cadastrar</button>
+                <button class="btn btn-outline-info" type="submit">ATUALIZAR</button>
             </div>
         </form>
         <div class="border-top pt-3">
-            <small class="text-muted">Já é cadastrado?<a href="{% url 'login' %}"><b>Login</b></a></small>
+            <small class="text-muted">Gostaria de voltar? <a href="{% url 'blog-home' %}"><b>VOLTAR</b></a></small>
         </div>
-
     </div>
-
-{% endblock %}
+{% endblock content %}

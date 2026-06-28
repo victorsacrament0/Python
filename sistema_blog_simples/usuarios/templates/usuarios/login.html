@@ -4,11 +4,11 @@
 
 
 {% block content %}
-    <div class="content-section">
+    <div style="margin-top: 56px;" class="content-section">
         <form action="" method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Entre</legend>
+                <legend class="border-bottom mb-4">Faça o login em sua conta</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
@@ -16,7 +16,7 @@
             </div>
         </form>
         <div class="border-top pt-3">
-            <small class="text-muted">Precisa de uma conta? <a href="{% url 'cadastrar' %}">Cadastre-se</a></small>
+            <small class="text-muted">Precisa de uma conta? <a href="{% url 'cadastrar' %}"><b>Cadastre-se</b></a></small>
         </div>
     </div>
 {% endblock content %}
