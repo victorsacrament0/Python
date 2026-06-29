@@ -8,7 +8,7 @@
     <h1>PyDjango Blog</h1>
     {% for post in posts %}
          <article class="media content-section">
-            <img class="rounded-cirlce article-img" style="padding-top: 30px;" src="{{ post.autor.perfil.image.url }}" alt="">
+            <img class="rounded-cirlce article-img" style="padding-top: 30px; height: auto;" src="{{ post.autor.perfil.image.url }}" alt="">
             <div class="media-body">
               <div class="article-metadata">
                 <a class="mr-2" href="#">{{ post.autor }}</a>
