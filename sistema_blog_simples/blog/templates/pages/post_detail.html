@@ -26,4 +26,38 @@
           </div>
           <br>
           </article>
+
+          <section class="media content-section">
+            <div class="media-body">
+              
+             <h5>✍ <b>Comentários</b> ({{ object.comentarios.count }}):</h5> 
+              <div class="comentarios-section"">
+                {% for comentario in object.comentarios.all %}
+                  <div class="comentario-card" style="background-color: rgb(170, 169, 169);padding: 10px;margin: 10px; border-radius: 10px;">
+                      <div class="comentario-header">
+                          <strong>{{ comentario.autor.username }}</strong> 
+                          <span class="comentario-data">em {{ comentario.data_criacao|date:"d/m/Y H:i" }}</span>
+                      </div>
+                      <div class="comentario-corpo">
+                          <p>{{ comentario.texto }}</p>
+                      </div>
+                  </div>
+                {% empty %}
+                  <p class="text-muted">Nenhum comentário ainda. Seja o primeiro a comentar!</p>
+                {% endfor %}
+              </div>
+              <hr>
+
+              {% if user.is_authenticated %}
+                  <h5>Deixe um comentário:</h5>
+                  <form method="POST">
+                      {% csrf_token %}
+                      {{ form.as_p }}
+                      <button type="submit" class="btn btn-primary">Enviar Comentário</button>
+                  </form>
+              {% else %}
+                  <p><a href="{% url 'login' %}">Faça login</a> para deixar um comentário.</p>
+              {% endif %}
+            </div>
+          </section>
 {% endblock content %}

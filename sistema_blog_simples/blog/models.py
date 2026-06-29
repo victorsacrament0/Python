@@ -18,3 +18,14 @@ class Postagem(models.Model):
     def get_absolute_url(self):
         return reverse('blog-detail', kwargs={'pk': self.pk})
     
+class Comentario(models.Model):
+    postagem = models.ForeignKey(Postagem, on_delete=models.CASCADE, related_name='comentarios')
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
+    texto = models.TextField()
+    data_criacao = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        ordering = ['-data_criacao']
+
+    def __str__(self):
+        return f'Comentário de {self.autor.username} em {self.postagem.titulo}'

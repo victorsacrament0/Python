@@ -1,7 +1,9 @@
-from django.shortcuts import render
-from .models import Postagem
+from django.shortcuts import render,redirect
+from .models import Postagem,Comentario
 from django.views.generic import ListView,DetailView,CreateView, UpdateView, DeleteView
+from django.views.generic.edit import FormMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from .forms import ComentarioForm
 
 class PostListView(LoginRequiredMixin, ListView):
     model = Postagem
@@ -11,7 +13,31 @@ class PostListView(LoginRequiredMixin, ListView):
 
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Postagem
-    template_name ='pages/post_detail.html'
+    template_name = 'pages/post_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Adiciona um formulário em branco no contexto para o método GET
+        context['form'] = ComentarioForm()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        # Processa o formulário quando o usuário envia o comentário (POST)
+        self.object = self.get_object()  # Define o objeto (Postagem atual)
+        form = ComentarioForm(request.POST)
+        
+        if form.is_valid():
+            comentario = form.save(commit=False)
+            comentario.postagem = self.object
+            comentario.autor = request.user
+            comentario.save()
+            return redirect('blog-detail', pk=self.object.pk)
+        
+        # Se o formulário for inválido, recarrega a página com os erros
+        context = self.get_context_data(object=self.object)
+        context['form'] = form
+        return self.render_to_response(context)
+
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
