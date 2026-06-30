@@ -4,6 +4,7 @@ from django.views.generic import ListView,DetailView,CreateView, UpdateView, Del
 from django.views.generic.edit import FormMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import ComentarioForm
+from django.db.models import Q
 
 class PostListView(LoginRequiredMixin, ListView):
     model = Postagem
@@ -11,19 +12,28 @@ class PostListView(LoginRequiredMixin, ListView):
     context_object_name = 'posts'
     ordering = ['-data_postagem']
 
+    def get_queryset(self):
+        pesquisa = self.request.GET.get('nome')
+        if pesquisa:
+            posts = Postagem.objects.filter(
+                Q(titulo__icontains=pesquisa) | Q(conteudo__icontains=pesquisa)
+            )
+        else:
+            posts = Postagem.objects.all()
+        return posts
+
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Postagem
     template_name = 'pages/post_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # Adiciona um formulário em branco no contexto para o método GET
         context['form'] = ComentarioForm()
         return context
 
     def post(self, request, *args, **kwargs):
-        # Processa o formulário quando o usuário envia o comentário (POST)
-        self.object = self.get_object()  # Define o objeto (Postagem atual)
+        
+        self.object = self.get_object() 
         form = ComentarioForm(request.POST)
         
         if form.is_valid():

@@ -19,6 +19,12 @@
             </div>
             <br>
           </article>
+    {% empty %}
+      <article class="media content-section">
+        <div style="padding: 20px;text-align: justify;">
+          <big><p><b>Nenhum post encontrado com essa palavra.</b></p></big>
+        </div>
+      </article>
     {% endfor %}
 
 {% endblock %}

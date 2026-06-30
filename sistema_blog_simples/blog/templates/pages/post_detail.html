@@ -33,7 +33,7 @@
              <h5>✍ <b>Comentários</b> ({{ object.comentarios.count }}):</h5> 
               <div class="comentarios-section"">
                 {% for comentario in object.comentarios.all %}
-                  <div class="comentario-card" style="background-color: rgb(170, 169, 169);padding: 10px;margin: 10px; border-radius: 10px;">
+                  <div class="comentario-card" style="background-color: rgb(209, 208, 208);padding: 10px;margin: 10px; border-radius: 10px;">
                       <div class="comentario-header">
                           <strong>{{ comentario.autor.username }}</strong> 
                           <span class="comentario-data">em {{ comentario.data_criacao|date:"d/m/Y H:i" }}</span>
