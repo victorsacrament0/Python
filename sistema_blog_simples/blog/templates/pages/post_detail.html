@@ -9,12 +9,12 @@
           
           <div class="media-body">
             
-            <h2>{{ object.titulo }}</h2>
+            <h2 style="font-family: Arial, sans-serif;">{{ object.titulo }}</h2>
             <p class="article-content">{{ object.conteudo }}</p>
           </div>
           
           <div class="article-metadata" >
-            <h4></h4><a class="mr-2" href="">Por: {{ object.autor }}</a></h4>
+            <h6 style="margin-bottom: -7px;"><strong>Por: {{ object.autor }} </strong></h6>
             <small class="text-muted">{{ object.data_postagem }}</small> <br>
             {% if object.autor == user %}
 
@@ -30,10 +30,10 @@
           <section class="media content-section">
             <div class="media-body">
               
-             <h5>✍ <b>Comentários</b> ({{ object.comentarios.count }}):</h5> 
+             <h5 style="font-family: Arial, sans-serif;">✍ <b>Comentários</b> ({{ object.comentarios.count }}):</h5> 
               <div class="comentarios-section">
                 {% for comentario in object.comentarios.all %}
-                  <div class="comentario-card" style="background-color: rgb(209, 208, 208);padding: 10px;margin: 10px; border-radius: 10px;">
+                  <div class="comentario-card" style="background-color: rgb(200, 198, 198);padding: 10px;margin: 10px; border-radius: 10px;">
                       <div class="comentario-header">
                           <strong>{{ comentario.autor.username }}</strong> 
                           <span class="comentario-data">em {{ comentario.data_criacao|date:"d/m/Y H:i" }}</span>
@@ -49,10 +49,10 @@
               <hr>
 
               {% if user.is_authenticated %}
-                  <h5>Deixe um comentário:</h5>
+                  <h6 style="font-family: Arial, sans-serif;"><small><strong>Deixe um comentário:</strong></small></h6>
                   <form method="POST">
                       {% csrf_token %}
-                      {{ form.as_p }}
+                      {{ form.texto }}
                       <button type="submit" class="btn btn-primary">Enviar Comentário</button>
                   </form>
               {% else %}
