@@ -28,3 +28,13 @@
     {% endfor %}
 
 {% endblock %}
+
+{% block procura %} 
+      <div class="list-group list-group-flush border-bottom scrollarea" style="margin-top: -40px;">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control md-1" name="nome" type="search" value="{{ request.GET.nome }}" style="width: 100vw;" placeholder="Digite o que deseja procurar" aria-label="Search">
+          <button style="text-align: center; margin: 0 120px 0 120px; border-radius: 10px;" type="submit"><span class="fs-5 fw-semibold" id="">Procurar</span></button>
+        </form> 
+      </div>
+
+{% endblock %}

@@ -101,42 +101,25 @@
                   <span class="fs-5 fw-semibold" style="margin-left: 40px;" id="gist-btn">Últimas Postagens</span>
                 </a>
                 <div class="list-group list-group-flush border-bottom scrollarea">
-                  <a href="#" class="list-group-item list-group-item-action  lh-tight" aria-current="true">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                      <strong class="mb-1">Verdade, estao tentando criar um blog... Por: Pedro
-                    </strong>
-                      <small>Quarta</small>
-                    </div>
-                    <div class="col-10 mb-1 small">Como sempre, estão tentando. Desde semana passada... </div>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                      <strong class="mb-1">Isso não é um erro - É um teste... Por: Rafael</strong>
-                      <small class="text-muted">Terça</small>
-                    </div>
-                    <div class="col-10 mb-1 small">Quando começamos a codificar, tudo funciona como magica...hahaha</div>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                      <strong class="mb-1">Eu quero ser um grande programador mas... Por Igor</strong>
-                      <small class="text-muted">Segunda</small>
-                    </div>
-                    <div class="col-10 mb-1 small">Eu quero ser um grande cientista da computação...</div>
-                  </a>
-
+                    {% for post in posts|slice:":3" %}
+                      <article class="media content-section">
+                        <div class="media-body">
+                          <h5><a class="article-title" href="{% url 'blog-detail' post.id %}">{{ post.titulo }}</a></h5>
+                          <small><p class="article-content">{{ post.conteudo|truncatechars:40 }}</p></small>
+                          <div class="article-metadata" style="margin-top: -10px;">
+                            <a class="mr-2" href="#">{{ post.autor }}</a>
+                            <small class="text-muted">{{ post.data_postagem }}</small>
+                          </div>
+                        </div>
+                        <br>
+                      </article>
+                    {% endfor %}
                 </div>
-              </div>
 
-
-              <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px; margin-top: 20px;" style="padding-top: 120px;">
-                <div class="list-group list-group-flush border-bottom scrollarea">
-                  <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control md-1" name="nome" type="search" value="{{ request.GET.nome }}" style="width: 100vw;" placeholder="Digite o que deseja procurar" aria-label="Search">
-                    <button style="text-align: center; margin: 0 120px 0 120px; border-radius: 10px;" type="submit"><span class="fs-5 fw-semibold" id="">Procurar</span></button>
-                  </form> 
+                <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px; margin-top: 20px; padding-top: 20px;">
+                  {% block procura %}{% endblock %}
                 </div>
-              </div>
-          </div>
+            </div>
         </div>
         
       </div>
