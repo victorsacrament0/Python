@@ -10,7 +10,7 @@ class PostListView(LoginRequiredMixin, ListView):
     model = Postagem
     template_name = 'pages/home.html'
     context_object_name = 'posts'
-    ordering = ['-data_postagem']
+    
 
     def get_queryset(self):
         pesquisa = self.request.GET.get('nome')
@@ -20,7 +20,7 @@ class PostListView(LoginRequiredMixin, ListView):
             )
         else:
             posts = Postagem.objects.all()
-        return posts
+        return posts.order_by('-data_postagem')
 
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Postagem
