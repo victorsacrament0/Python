@@ -103,7 +103,7 @@
                 <div class="list-group list-group-flush border-bottom scrollarea">
                   {% for post in ultimas_postagens_globais %}
                     <article class="media content-section">
-                      <div class="media-body">
+                      <div class="media-body" style="background-color: rgb(214, 212, 212); padding: 9px;border-radius: 8px;">
                         <h5><strong><a class="article-title" style="font-family: Arial, sans-serif;" href="{% url 'blog-detail' post.id %}">{{ post.titulo }}</a></strong></h5>
                         <small><p class="article-content" style="margin-left: 10px;">{{ post.conteudo|truncatechars:40 }}</p></small>
                         <div class="article-metadata" style="margin-top: -10px;">
@@ -111,7 +111,6 @@
                           <small class="text-muted">{{ post.data_postagem }}</small>
                         </div>
                       </div>
-                      <br>
                     </article>
                   {% endfor %}
                 </div>    
@@ -133,7 +132,7 @@
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contato</a></li>
             <li class="nav-item"><a href="{% url 'blog-sobre' %}" class="nav-link px-2 text-muted">Sobre</a></li>
           </ul>
-          <p style="margin-top: 10px;" class="text-center text-muted">&copy; <i>Sacramento</i>📎</p>
+          <p style="margin-top: 10px;" class="text-center text-muted">&copy; <i>Grupo 01</i>📎</p>
         </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
