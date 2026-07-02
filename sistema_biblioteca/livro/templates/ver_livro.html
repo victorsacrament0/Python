@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load filtros %}
 
 {% block 'titulo' %} Livros {% endblock %}
 
@@ -59,7 +60,7 @@
                     <th scope="row">{{e.nome_emprestado}}</th>
                     <td>{{e.data_emprestimo}}</td>
                     <td>{{e.data_devolucao}}</td>
-                    <td></td>
+                    <td>{{e.data_devolucao|mostra_duracao:e.data_emprestimo }} dia(s)</td>
                     </tr>
                 {% endfor %}
             </tbody>
