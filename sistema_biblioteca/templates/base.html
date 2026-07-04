@@ -29,20 +29,70 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Cadastrar Livro</h5>    
+          <h5 class="modal-title" id="exampleModalLabel">Cadastrar</h5>    
         </div>
         <div class="modal-body">
-          <form action="" method="POST">{% csrf_token %}
-            <table>
-             {{form.as_table}}
-            </table>
-            <input type="submit" class="btn btn-success" value="Cadastrar">
-          </form>
+          <button onclick="mostrar_form(1)" class="btn btn-warning">CATEGORIA</button>
+          <button onclick="mostrar_form(2)" class="btn btn-info">LIVRO</button>
+          <button onclick="mostrar_form(2)" class="btn btn-success">EMPRÉSTIMO</button>
+          <br>
+          <br>
+          <br>
+          <div style="display: none;" id="livro">
+            <form action="" method="POST">{% csrf_token %}
+              <table>
+              {{form.as_table}}
+              </table>
+              <input type="submit" class="btn btn-success" value="Cadastrar">
+            </form>
+          </div>
+          
+          <div style="display: none;" id="categoria">
+            <form action="{% url 'cadastrar_categoria' %}" method="POST">{% csrf_token %}
+              <table>
+                {{form_categoria.as_table}}
+              </table>
+              <input type="hidden" name="usuario" value="{{usuario_logado}}">
+              <input type="submit" class="btn btn-success" value="Salvar">
+            </form>
+          </div>
+
+          <div style="display: none;" id="emprestimo">
+            <form action="" method="POST">{% csrf_token %}
+              <table>
+              {{form.as_table}}
+              </table>
+              <input type="submit" class="btn btn-success" value="Cadastrar">
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
 {% endif %}   
+
+<script>
+  function mostrar_form(v1){
+    categoria = document.getElementById('categoria')
+    livro = document.getElementById('livro')
+    emprestimo = document.getElementById('emprestimo')
+
+    if (v1 == 1){
+      categoria.style.display = 'block';
+      livro.style.display = 'none';
+      emprestimo.style.display = 'none';
+    }else if(v1 == 2){
+      livro.style.display = 'block';
+      emprestimo.style.display = 'none';
+      categoria.style.display = 'none';
+    }else if (v1 == 3){
+      emprestimo.style.display = 'block';
+      livro.style.display = 'none';
+      categoria.style.display = 'none';
+    }
+
+  }
+</script>
   
   </body>
 </html>

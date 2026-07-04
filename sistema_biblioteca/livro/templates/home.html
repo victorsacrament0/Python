@@ -3,29 +3,39 @@
 {% block 'titulo' %} Livros {% endblock %}
 
 {% block 'conteudo' %}
+    <br>
+    {% if status_categoria == 1  %}
+        <div class="alert alert-success" role="alert">
+            Categoria cadastrada com sucesso!
+        </div>
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            Erro! Categoria não pode ser cadastrada!
+        </div>
+    {% endif %}
 
-<div class="container">
-    
-    <div class="row">
-        {% for livro in livros %}
-            <div col-md>
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="imglivro">
-                    <div class="card-body">
-                        <h5 class="card-title">{{livro.nome}} </h5>
-                        <h6 class="card-text">{{livro.autor}} </h6>
-                        <p class="card-text">{{livro.categoria}}</p>
-                        {% if livro.emprestado %}
-                            <p>⛔Livro emprestado⛔</p>
-                        {% else %}
-                            <p>✅Livro disponível✅</p>
-                        {% endif %}
-                        <a href="{% url 'ver_livro' livro.id %}" class="btn btn-info">Descrição</a>
-                    </div>
-                </div> 
-            </div>    
-        {% endfor %}
+    <div class="container">
+        
+        <div class="row">
+            {% for livro in livros %}
+                <div col-md>
+                    <div class="card" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="imglivro">
+                        <div class="card-body">
+                            <h5 class="card-title">{{livro.nome}} </h5>
+                            <h6 class="card-text">{{livro.autor}} </h6>
+                            <p class="card-text">{{livro.categoria}}</p>
+                            {% if livro.emprestado %}
+                                <p>⛔Livro emprestado⛔</p>
+                            {% else %}
+                                <p>✅Livro disponível✅</p>
+                            {% endif %}
+                            <a href="{% url 'ver_livro' livro.id %}" class="btn btn-info">Descrição</a>
+                        </div>
+                    </div> 
+                </div>    
+            {% endfor %}
+        </div>
     </div>
-</div>
 
 {% endblock %}
