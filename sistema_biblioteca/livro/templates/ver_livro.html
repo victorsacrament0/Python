@@ -4,9 +4,6 @@
 {% block 'titulo' %} Livros {% endblock %}
 
 {% block 'conteudo' %}
-    <div class="container">
-
-
 
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -26,41 +23,43 @@
 
 
 
-        <form action="" method="POST"> {% csrf_token %}
-            <br>
+    <div class="container">
+        <br>
+        <form action="{% url 'alterar_livro' %}" method="POST"> {% csrf_token %}
+            <input type="hidden" value="{{livro.id}}" name="livro_id">
             <p>
                 <label for="">Nome do livro:</label>
-                <input class="form-control" type="text" value="{{livro.nome}}">
+                <input class="form-control" type="text" name="nome_livro" value="{{livro.nome}}">
             </p>
             <p>
                 <label for="">Nome do Autor:</label>
-                <input class="form-control" style="width: 40%;" type="text" value="{{livro.autor}}">
+                <input class="form-control" style="width: 40%;" name="autor" type="text" value="{{livro.autor}}">
             </p>
             <p>
                 <label for="">Nome do Co-autor:</label>
-                <input class="form-control" style="width: 40%;" type="text" value="{{livro.co_autor}}">
+                <input class="form-control" style="width: 40%;" name="co_autor"  type="text" value="{{livro.co_autor}}">
             </p>
-            <p>
-                <label for="">Data Cadastro:</label>
-                <input class="form-control" style="width: 40%;" type="text" value="{{livro.data_cadastro}}">
-            </p>
-
-            <select class="form-control" name="categoria" style="width: 20%;">
+            <label>Categoria:</label>
+            <select class="form-control" name="categoria_id" style="width: 20%;">
                 {% for cl in categoria_livro %}
                     {% if livro.categoria.nome == cl.nome %}
-                        <option selected>{{cl}}</option>
+                        <option value="{{cl.id}}" selected>{{cl}}</option>
                     {% else %}
-                        <option>{{cl}}</option>
+                        <option value="{{cl.id}}">{{cl}}</option>
                     {% endif %}
                 {% endfor %}
             </select>
+            <p>
+                <label for="">Data Cadastro:</label>
+                <p>{{livro.data_cadastro}}</p>
+            </p>
             
-            <label>Emprestado: &nbsp;&nbsp;</label>
+            <label>Disponibilidade: &nbsp;&nbsp;</label>
             
             {% if livro.emprestado %}
-                <input type="checkbox" checked style="transform: scale(2);" name="emprestado">
+                <p>✅ Emrestado ✅</p>
             {% else %}
-                <input type="checkbox" style="transform: scale(2);" name="emprestado">
+               <p></p>📚 Disponível 📚</p>
             {% endif %}
             <br>            
         </form>
@@ -84,8 +83,8 @@
                     <tr>
                     <th scope="row">{{e.nome_emprestado}}</th>
                     <td>{{e.data_emprestimo}}</td>
-                    <td>{{e.data_devolucao}}</td>
-                    <td>{{e.data_devolucao|mostra_duracao:e.data_emprestimo }} dia(s)</td>
+                    <td>{{e.data_devolucao|default:'Emprestado'}}</td>
+                    <td>{{e.data_devolucao|mostra_duracao:e.data_emprestimo }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
