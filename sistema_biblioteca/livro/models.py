@@ -39,7 +39,7 @@ class Emprestimo(models.Model):
     nome_emprestado = models.ForeignKey(Usuario, on_delete=models.CASCADE, blank=True, null= True)
     data_emprestimo = models.DateTimeField(default= datetime.datetime.now())
     data_devolucao = models.DateTimeField(blank=True, null= True)
-    livro = models.ForeignKey(Livros, on_delete=models.DO_NOTHING)
+    livro = models.ForeignKey(Livros, on_delete=models.CASCADE)
     avaliacao = models.CharField(max_length=1, choices=choices, blank=True, null= True)
 
     def __str__(self):
