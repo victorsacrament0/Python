@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from .models import Usuario
 from hashlib import sha256
 
+def home (request):
+    return render(request, 'home.html')
+
 def login(request):
     if request.session.get('usuario'):
         return redirect('/livro/home/')

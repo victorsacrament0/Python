@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block 'titulo' %} Home {% endblock %}
+
+{% block 'conteudo' %}
+
+    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100" style="margin-top: -100px;">
+        
+        <img src="/media/logobib.jpg" alt="logobib" class="img-fluid mb-4">
+        
+        <div class="text-center" style="margin-top: -80px;">
+            <a href="{% url 'login' %}" class="btn btn-success me-2">Login</a>
+            <a href="{% url 'cadastro' %}" class="btn btn-info ">Cadastrar</a>
+        </div>    
+        
+    </div>
+
+{% endblock %}
