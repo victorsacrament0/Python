@@ -50,9 +50,9 @@ def ver_livro(request,id):
                                                      'livros_emprestar':livros_emprestar, 
                                                      'livros_emprestados':livros_emprestados,
                                                      'form':form, 
+                                                     'form_categoria':form_categoria,
                                                      'usuarios':usuarios,
                                                      'id_livro':id,
-                                                     'form_categoria':form_categoria,
                                                      'categoria_livro':categoria_livro,
                                                      'emprestimos':emprestimos,
                                                      'usuario_logado': request.session.get('usuario')
@@ -64,17 +64,13 @@ def ver_livro(request,id):
 
 def cadastrar_livro(request):
     if request.method == 'POST':
-        form = CadastroLivro(request.POST)
-        livro = Livros(
-            nome = form.data['nome'],
-            autor = form.data['autor'],
-            co_autor = form.data['co_autor'],
-            data_cadastro = form.data['data_cadastro'],
-            emprestado = form.data['emprestado'],
-            categoria = form.data['categoria'],
-        )
-        return redirect('/livro/home')
-    return redirect('/livro/home')
+        form = CadastroLivro(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('/livro/home')
+        else:
+            return redirect('/livro/home')
 
 def excluir_livro(self,id_livro):
     livro = Livros.objects.get(id=id).delete()
@@ -142,5 +138,26 @@ def alterar_livro(request):
 def seus_emprestimos(request):
     usuario = Usuario.objects.get(id = request.session['usuario'])
     emprestimos = Emprestimo.objects.filter(nome_emprestado = usuario)
+    form = CadastroLivro()
+    form_categoria = CategoriaLivro()
+    form.fields['usuario'].initial = request.session['usuario']
+    form.fields['categoria'].queryset = Categoria.objects.filter(usuario = usuario)
+        
     
-    return render(request, 'seus_emprestimos.html', {'usuario_logado':request.session['usuario'], 'emprestimos':emprestimos})
+    return render(request, 'seus_emprestimos.html', { 'usuario_logado':request.session['usuario'],
+                                                      'emprestimos':emprestimos,
+                                                      'form':form, 
+                                                      'form_categoria':form_categoria,
+                                                    })
+
+def processa_avaliacao(request):
+    id_emprestimo = request.POST.get('id_emprestimo')
+    opçoes = request.POST.get('opcoes')
+    id_livro = request.POST.get('id_livro')
+    emprestimo = Emprestimo.objects.get(id = id_emprestimo)
+    if emprestimo.livro.usuario.id == request.session['usuario']:
+        emprestimo.avaliacao = opçoes
+        emprestimo.save()
+        return redirect(f'/livro/ver_livro/{id_livro}')
+    else:
+        return redirect('/livro/home')

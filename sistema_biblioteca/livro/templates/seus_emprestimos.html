@@ -1,23 +1,33 @@
 {% extends 'base.html' %}
 {% load filtros %}
+{% block 'head' %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+{% endblock %}
 
 {% block 'titulo' %} Seus Emprestimos {% endblock %}
 
 {% block 'conteudo' %}
-
-{% for emprestimo in emprestimos %}
-    <label><u>Nome:</u></label>
-    <p>{{emprestimo.livro}}</p><br>
-    <label><u>Emprestado:</u></label>
-    <p>{{emprestimo.data_emprestimo}}</p><br>
-    <label><u>Devolvido:</u></label>
-    {% if emprestimo.data_devolucao %}
-        <p>{{emprestimo.data_devolucao}}</p>
-    {% else %}
-        <p>❌</p>
-    {% endif %}
-    <hr>
-{% endfor %}
-
+    <div class="container">
+        <h3>📤Empréstimos📥</h3>
+        {% for emprestimo in emprestimos %}
+            <div class="card_emprestimos">
+                <div class="titulo">
+                    <h3>{{emprestimo.livro}}</h3>
+                </div>
+                <hr><br>
+                <div class="card_body">
+                    <label><u>📤 Emprestado:</u></label>
+                    {{emprestimo.data_emprestimo}}<br>
+                    <label><u>📥 Devolvido:</u></label>
+                    {% if emprestimo.data_devolucao %}
+                        {{emprestimo.data_devolucao}}
+                    {% else %}
+                        ❌
+                    {% endif %}
+                </div>    
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}

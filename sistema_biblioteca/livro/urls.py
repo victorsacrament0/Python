@@ -11,4 +11,5 @@ urlpatterns = [
     path('cadastrar_categoria/', views.cadastrar_categoria, name= 'cadastrar_categoria'),
     path('cadastrar_emprestimo/', views.cadastrar_emprestimo, name= 'cadastrar_emprestimo'),
     path('seus_emprestimos/', views.seus_emprestimos, name= 'seus_emprestimos'),
+    path('processa_avaliacao/', views.processa_avaliacao, name= 'processa_avaliacao'),
 ]

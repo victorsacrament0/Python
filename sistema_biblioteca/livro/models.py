@@ -13,6 +13,7 @@ class Categoria(models.Model):
 
 
 class Livros(models.Model):
+    img = models.ImageField(upload_to='capa_livro', null=True, blank=True)
     nome = models.CharField(max_length=200)
     autor = models.CharField(max_length=100)
     co_autor = models.CharField(max_length=100, blank=True , null= True)
@@ -43,3 +44,4 @@ class Emprestimo(models.Model):
 
     def __str__(self):
         return f'{self.nome_emprestado} | {self.livro}'
+    
