@@ -13,6 +13,8 @@ def cadastrar_vendedor(request):
         vendedores = Users.objects.filter(cargo='V')
         return render(request, 'cadastrar_vendedor.html',{'vendedores':vendedores})
     if request.method == 'POST':
+        nome = request.POST.get('nome')
+        sobrenome = request.POST.get('sobrenome')
         email = request.POST.get('email')
         senha = request.POST.get('senha')
 
@@ -21,7 +23,7 @@ def cadastrar_vendedor(request):
             messages.add_message(request,messages.WARNING, '❌ Email já existe em nosso banco de dados!')
             return redirect(reverse('cadastrar_vendedor'))
         
-        user = Users.objects.create_user(username=email, email=email, password=senha, cargo= 'V')
+        user = Users.objects.create_user(username=email,first_name=nome ,last_name=sobrenome, email=email, password=senha, cargo= 'V')
 
         messages.add_message(request,messages.SUCCESS, '✅ Vendedor cadastrado com sucesso!')
         return redirect(reverse('cadastrar_vendedor'))
@@ -34,6 +36,7 @@ def login(request):
         return render(request, 'login.html')
     
     elif request.method == 'POST':
+        
         login = request.POST.get('email')
         senha = request.POST.get('senha')
         
