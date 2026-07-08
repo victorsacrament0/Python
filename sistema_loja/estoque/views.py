@@ -1,14 +1,18 @@
-from django.shortcuts import render,redirect
-from django.urls import reverse
+from rolepermissions.decorators import has_permission_decorator
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from .models import Categoria,Produto, Imagem
+from django.shortcuts import render,redirect
+from .forms import ProdutoForm
+from django.contrib import messages
 from PIL import Image, ImageDraw
+from django.urls import reverse
 from datetime import date
 from io import BytesIO
-from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
-from django.contrib import messages
 
 
+
+@has_permission_decorator('cadastrar_produto')
 def add_produto (request):
     if request.method == 'GET':
         categorias = Categoria.objects.all()
@@ -40,3 +44,11 @@ def add_produto (request):
             img_t.save()
         messages.add_message(request,messages.SUCCESS, '✅ Produto cadastrado com sucesso!')
         return redirect(reverse('add_produto'))
+    
+def produto (request,slug):
+    if request.method == 'GET':
+        produto = Produto.objects.get(slug=slug)
+        cat = produto.__dict__
+        cat['categoria'] = produto.categoria.id
+        form = ProdutoForm(initial=cat)
+    return render(request, 'produto.html', {'form':form})

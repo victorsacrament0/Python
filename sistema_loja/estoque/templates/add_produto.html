@@ -40,19 +40,21 @@
         <hr class="bg-hr">
 
         <div class="listar_produtos">
-            <div>
+            <div class="row">
                 {% for produto em produtos %}
-                    <div class="card" style="width: 18rem;">
-                        {% if produto|get_first_image %}
-                            <img width="100%" class="card-img-top" src="{{produto|get_first_image}}" alt="img_prod">
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{produto.nome}}</h5>
-                            <span class="badge badge-primary">{{produto.categoria}}</span>
-                            <p class="card-text">Preço compra: R${{produto.preco_compra}}</p>
-                            <p class="card-text">Preço venda: R${{produto.preco_venda}}</p>
-                            <br>
-                            <a href="#" class="btn btn-primary">Acessar</a>
+                    <div class="col-sm">
+                        <div class="card" style="width: 18rem;">
+                            {% if produto|get_first_image %}
+                                <img width="100%" class="card-img-top" src="{{produto|get_first_image}}" alt="img_prod">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{produto.nome}}</h5>
+                                <span class="badge badge-primary">{{produto.categoria}}</span>
+                                <p class="card-text">Preço compra: R${{produto.preco_compra}}</p>
+                                <p class="card-text">Preço venda: R${{produto.preco_venda}}</p>
+                                <br>
+                                <a href="{% url 'produto' produto.slug %}" class="btn btn-success">Acessar</a>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
