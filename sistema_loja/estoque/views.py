@@ -1,16 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.urls import reverse
 from .models import Categoria,Produto, Imagem
 from PIL import Image, ImageDraw
 from datetime import date
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
-# Create your views here.
+from django.contrib import messages
+
 
 def add_produto (request):
     if request.method == 'GET':
         categorias = Categoria.objects.all()
-        return render (request, 'add_produto.html', {'categorias':categorias})
+        produtos = Produto.objects.all()
+        return render (request, 'add_produto.html', {'categorias':categorias, 'produtos':produtos})
 
     elif request.method == 'POST':
         nome = request.POST.get('nome')
@@ -18,7 +21,6 @@ def add_produto (request):
         quantidade = request.POST.get('quantidade')
         preco_compra = request.POST.get('preco_compra')
         preco_venda = request.POST.get('preco_venda')
-        imagens = request.FILES.getlist('imagens')
 
         produto = Produto(nome=nome, categoria_id=categoria, quantidade=quantidade, preco_compra=preco_compra, preco_venda=preco_venda)
         produto.save()
@@ -36,3 +38,5 @@ def add_produto (request):
             img_tratada = InMemoryUploadedFile(output, 'ImageField', name,'image/jpeg', sys.getsizeof(output),None)
             img_t = Imagem(imagem = img_tratada, produto=produto)
             img_t.save()
+        messages.add_message(request,messages.SUCCESS, '✅ Produto cadastrado com sucesso!')
+        return redirect(reverse('add_produto'))
