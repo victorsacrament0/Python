@@ -7,6 +7,8 @@
 
 .env
 
+*.txt
+
 .data/
 
 __pycache__/
@@ -15,6 +17,10 @@ __pycache__/
 
 db.sqlite3
 
+*.txt
+
 *.log
+
 .MEDIA/
+
 .media/
