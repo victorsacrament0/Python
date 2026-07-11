@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %} | Painel {% endblock %}
+{% block content %}
+
+
+<div class="sub-banner overview-bgi">
+    <div class="container breadcrumb-area">
+        <div class="breadcrumb-areas">
+            <h1>Painel</h1>
+            <ul class="breadcrumbs">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="active">{{user.first_name}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container mt-50 mb-50">
+  {% include 'includes/messages.html' %}
+	<div class="main-title" style="text-align:left !important;">
+            <h1>Bem vindo, <span>{{user.first_name}}</span></h1>
+            <p>Aqui estão os carros sobre os quais você procurou.</p>
+        </div>
+        {% if inquiries %}
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Situação</th>
+                <th scope="col">Atividade</th>
+              </tr>
+              </thead>
+              <tbody>
+
+              {% for inquiry in inquiries %}
+                <tr>
+                  <th scope="row">1</th>
+                  <td>{{inquiry.car_title}}</td>
+                  <td>{{inquiry.city}}</td>
+                  <td><a href="{% url 'car_detail' inquiry.car_id %}" class="btn btn-outline-dark">Ver carro</a></td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+        {% else %}
+          <h4>Você não tem consultas.</h4>
+        {% endif %}
+
+</div>
+
+
+{% endblock %}
