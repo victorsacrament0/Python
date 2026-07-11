@@ -7,7 +7,7 @@ from multiselectfield import MultiSelectField
 class Car(models.Model):
 
     state_choice = (
-       ('AC', 'Acre'),
+        ('AC', 'Acre'),
         ('AL', 'Alagoas'),
         ('AP', 'Amapá'),
         ('AM', 'Amazonas'),

@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 
-{% block title %} Resultado {% endblock %}
+{% block title %} | Resultado {% endblock %}
 {% block content %}
 {% load humanize %}
  
 <div class="sub-banner overview-bgi">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
-            <h1>Search Resultado</h1>
+            <h1>Resultado</h1>
             <ul class="breadcrumbs">
                 <li><a href="index.html">Home</a></li>
                 <li class="active">Procurar/li>
@@ -174,7 +174,7 @@
                             <p class="cartype">{{car.body_style}}</p>
                         </div>
                         <div class="pull-right">
-                            <p class="price">$ {{car.price | intcomma}}</p>
+                            <p class="price">$ {{car.price | intcomma}}</p>  <!-- usado para converter números inteiros ou flutuantes em strings -->
                         </div>
                     </div>
                 </div>

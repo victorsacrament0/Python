@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Car
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator  #paginator pode organizar ou otimizar
 
 
 def cars(request):
