@@ -15,7 +15,7 @@
                     <h3><b>Padrão de Impacto Surpreendente</b></h3>
                     <h5><b>Vamos mostrar um padrão impecavel de veículos.<br>
                         uma abordagem sem compromisso para encontrar o carro dos seus sonhos</b></h5>
-                    <a href="services.html" class="btn btn-lg btn-theme">Saiba mais</a>
+                    <a href="{% url 'services' %}" class="btn btn-lg btn-theme">Saiba mais</a>
                 </div>
             </div>
             <div class="carousel-item banner-max-height item-bg">
@@ -24,7 +24,7 @@
                     <h3><b>Explore seus sonhos</b></h3>
                     <h5><b>Permita-nos guiá-lo através do nosso showroom.<br>
                         uma abordagem sem compromisso para encontrar o carro dos seus sonhos</b></h5>
-                    <a href="services.html" class="btn btn-lg btn-theme">Saiba mais</a>
+                    <a href="{% url 'services' %}" class="btn btn-lg btn-theme">Saiba mais</a>
                 </div>
             </div>
             <div class="carousel-item banner-max-height item-bg">
@@ -33,7 +33,7 @@
                     <h3> <b>Nós somos o movimento!</b></h3>
                     <h5><b>Permita-nos mostrar-lo nosso estoque.<br>
                         uma abordagem sem compromisso para encontrar o carro dos seus sonhos</b></h5>
-                    <a href="services.html" class="btn btn-lg btn-theme">Saiba mais</a>
+                    <a href="{% url 'services' %}" class="btn btn-lg btn-theme">Saiba mais</a>
                 </div>
             </div>
         </div>
@@ -104,12 +104,12 @@
 
 <div class="featured-car content-area-5">
     <div class="container">
-        <!-- Main title -->
+        
         <div class="main-title">
             <h1>Showroom <span>Carros</span></h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
-        <!-- Slick slider area start -->
+        
           <div class="slick-slider-area clearfix">
             <div class="row slick-carousel" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
               {% for car in featured_cars %}
@@ -194,9 +194,9 @@
 
 <div class="featured-car content-area">
     <div class="container">
-        <!-- Main title -->
+        
         <div class="main-title">
-            <h1>Latest <span>Cars</span></h1>
+            <h1>Ultimos <span>Carros</span></h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
         <div class="row">
@@ -291,96 +291,27 @@
     
         <div class="slick-slider-area clearfix">
             <div class="row slick-carousel" data-slick='{"slidesToShow": 4, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+            {% for team in teams %}
                 <div class="slick-slide-item">
                     <div class="team-1">
                         <div class="photo">
                             <a href="#">
-                                <img src="{% static 'img/avatar/avatar-12.jpg' %}" alt="team-1" class="img-fluid">
+                                <img src="{{team.photo.url}}" alt="team-1" class="img-fluid">
                             </a>
                             <div class="social-list clearfix">
-                                <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
+                                <a href="{{team.facebook_link}}" target="_blank" class="facebook-bg"><i class="fa fa-facebook"></i></a>
+                                <a href="{{team.twitter_link}}" target="_blank" class="twitter-bg"><i class="fa fa-twitter"></i></a>
+                                <a href="{{team.google_plus_link}}" target="_blank" class="google-bg"><i class="fa fa-google"></i></a>
                             </div>
                         </div>
                         <div class="details">
-                            <h4><a href="team-detail.html">Bernardo Benedito</a></h4>
-                            <h5>Diretor</h5>
+                            <h4><a href="team-detail.html">{{team.first_name}} {{team.last_name}}</a></h4>
+                            <h5>{{team.designation}}</h5>
                         </div>
                     </div>
                 </div>
-                <div class="slick-slide-item">
-                    <div class="team-1">
-                        <div class="photo">
-                            <a href="#">
-                                <img src="{% static 'img/avatar/avatar-9.jpg' %}" alt="team-1" class="img-fluid">
-                            </a>
-                            <div class="social-list clearfix">
-                                <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
-                            </div>
-                        </div>
-                        <div class="details">
-                            <h4><a href="team-detail.html">Patricia Pedrosa</a></h4>
-                            <h5>Técnico de Suporte</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-slide-item">
-                    <div class="team-1">
-                        <div class="photo">
-                            <a href="#">
-                                <img src="{% static 'img/avatar/avatar-11.jpg' %}" alt="team-1" class="img-fluid">
-                            </a>
-                            <div class="social-list clearfix">
-                                <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
-                            </div>
-                        </div>
-                        <div class="details">
-                            <h4><a href="team-detail.html">Andre Antunes</a></h4>
-                            <h5>Diretor Criativor</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-slide-item">
-                    <div class="team-1">
-                        <div class="photo">
-                            <a href="#">
-                                <img src="{% static 'img/avatar/avatar-10.jpg' %}" alt="team-1" class="img-fluid">
-                            </a>
-                            <div class="social-list clearfix">
-                                <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
-                            </div>
-                        </div>
-                        <div class="details">
-                            <h4><a href="team-detail.html">Marcia Martins</a></h4>
-                            <h5>Web Developer</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-slide-item">
-                    <div class="team-1">
-                        <div class="photo">
-                            <a href="#">
-                                <img src="{% static 'img/avatar/avatar-11.jpg' %}" alt="team-1" class="img-fluid">
-                            </a>
-                            <div class="social-list clearfix">
-                                <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
-                            </div>
-                        </div>
-                        <div class="details">
-                            <h4><a href="team-detail.html">Andre Antunes</a></h4>
-                            <h5>Diretor Criativo</h5>
-                        </div>
-                    </div>
-                </div>
+            {% endfor %}
+
             </div>
         </div>
     </div>
