@@ -72,9 +72,9 @@ def cadastrar_livro(request):
         else:
             return redirect('/livro/home')
 
-def excluir_livro(self,id_livro):
+def excluir_livro(self,id):
     livro = Livros.objects.get(id=id).delete()
-    return redirect('/livro/home')
+    return redirect('/livro/home', {'livro':livro})
 
 def cadastrar_categoria (request):
     form = CategoriaLivro(request.POST)

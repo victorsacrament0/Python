@@ -13,7 +13,7 @@ class Categoria(models.Model):
 
 
 class Livros(models.Model):
-    img = models.ImageField(upload_to='capa_livro', null=True, blank=True)
+    img = models.ImageField(upload_to='capa_livro', default='capa_livro/capa_padrao.jpg', null=True, blank=True)
     nome = models.CharField(max_length=200)
     autor = models.CharField(max_length=100)
     co_autor = models.CharField(max_length=100, blank=True , null= True)

@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Usuario
 from hashlib import sha256
+from django.contrib import messages
 
-def home (request):
-    return render(request, 'home.html')
+def index (request):
+    return render(request, 'index.html')
 
 def login(request):
     if request.session.get('usuario'):
@@ -54,10 +55,11 @@ def valida_login (request):
         return redirect ('/auth/login/?status=1')
     elif len(usuario) > 0:
         request.session['usuario'] = usuario[0].id
+        messages.success(request, f'Bem-vindo, {usuario[0].nome}!')
         return redirect('/livro/home/?id_usuario={request.session["usuario"]}')
     pass
     
 
 def sair(request):
     request.session.flush()
-    return redirect('/auth/login/')
+    return redirect('/')
