@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block 'body' %}
+{% block content %}
 
 <div class="relative isolate">
     <svg class="pointer-events-none -z-50  absolute inset-x-0 top-0 h-[64rem] w-full stroke-gray-200 [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)]" aria-hidden="true">
@@ -127,30 +128,30 @@
     </div>
     
 </div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    const ctx = document.getElementById('myChart');
-  
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: {{ tuple_grafico.0|safe }},
-        datasets: [{
-          label: 'Humor do paciente',
-          data: {{ tuple_grafico.1|safe }},
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+    
+        new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ tuple_grafico.0|safe }},
+            datasets: [{
+            label: 'Humor do paciente',
+            data: {{ tuple_grafico.1|safe }},
+            borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+            y: {
+                beginAtZero: true
+            }
+            }
         }
-      }
-    });
-</script>
+        });
+    </script>
 
 
 
-{% endblock 'body' %}
+{% endblock %}
