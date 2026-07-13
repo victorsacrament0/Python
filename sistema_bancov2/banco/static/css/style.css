@@ -1,6 +1,6 @@
-root {
+:root {
   /* Fundos: Azul Marinho Acinzentado (Mais claro e visível, sem ser escuro total) */
-  --bg-primary: #1e293b;       /* Slate Blue clássico, traz muita clareza e modernidade */
+  --bg-primary: #1e293b !important;       /* Slate Blue clássico, traz muita clareza e modernidade */
   --bg-navbar: rgba(30, 41, 59, 0.9);
   
   /* Textos: Contraste Máximo para leitura perfeita */
